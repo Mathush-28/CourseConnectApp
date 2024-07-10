@@ -38,7 +38,7 @@
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="150dp"
         android:fontFamily="@font/antic"
         android:text="Powered by android"
         android:textAlignment="center"
