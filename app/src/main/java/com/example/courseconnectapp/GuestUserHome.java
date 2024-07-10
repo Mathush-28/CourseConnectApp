@@ -31,11 +31,11 @@ public class GuestUserHome extends AppCompatActivity {
             return insets;
         });
 
-//        // Load the MapFragment
-//        GFragment2 GFragment = new GFragment2();
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.replace(R.id.map, GFragment);
-//        transaction.commit();
+////        // Load the MapFragment
+//          GFragment2 gfragment = new GFragment2();
+//          FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//          transaction.replace(R.id.map, gfragment);
+////        transaction.commit();
 
         tabLayout1 = findViewById(R.id.tabLayout2);
         viewpager2 = findViewById(R.id.viewpager2);

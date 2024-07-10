@@ -79,7 +79,7 @@ public class fragment2 extends Fragment {
                 Toast.makeText(getActivity(), "Course Added Successfully", Toast.LENGTH_SHORT).show();
                 clearFields(courseNameEditText, courseCostEditText, courseDurationEditText, editTextStartDate, editTextRegistrationDueDate);
             }
-           // clearFields(courseNameEditText, courseCostEditText, courseDurationEditText, editTextStartDate, editTextRegistrationDueDate);
+
 
         });
 
