@@ -68,7 +68,7 @@
                 android:id="@+id/tvFinalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Discounted Price: "
+                android:text="Final Price:"
                 android:textSize="16sp"
                 android:layout_marginBottom="16dp"
                 android:layout_marginStart="10dp"/>

@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:text="Course details"
             android:textSize="20sp"
+            android:backgroundTint="@color/black"
             android:textStyle="bold"
             android:layout_gravity="center"/>
 
@@ -189,7 +190,7 @@
                     android:id="@+id/tvMapLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Map"
+                    android:text="Nearest Location:"
                     android:textSize="16sp"/>
 
                 <com.google.android.gms.maps.MapView
@@ -206,7 +207,10 @@
             android:id="@+id/btnAddToCart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add to cart"
+            android:text="Register Course"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:backgroundTint="@color/black"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"/>
     </LinearLayout>

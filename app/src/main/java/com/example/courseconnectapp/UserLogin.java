@@ -52,19 +52,22 @@ public class UserLogin extends AppCompatActivity {
 
                 if(!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                     if(!pass.isEmpty() ){
+                        System.out.println("asdfg error");
                         auth.signInWithEmailAndPassword(email, pass)
                                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                     @Override
                                     public void onSuccess(AuthResult authResult) {
                                         Toast.makeText(UserLogin.this, "SignIn successful", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(UserLogin.this, User.class));
-                                        finish();
+                                       finish();
                                     }
 
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(UserLogin.this, "SignIn failed", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(UserLogin.this, "SignIn failed : "+e, Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(UserLogin.this, UserSignup.class));
+                                        finish();
                                     }
                                 });
 

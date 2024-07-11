@@ -59,6 +59,7 @@ public class RegistrationActivity extends AppCompatActivity {
         courseName = intent.getStringExtra("courseName");
         String finalPrice = intent.getStringExtra("finalPrice");
 
+
         tvCourseName.setText("Course Name: " + courseName);
         coursePrice = Double.parseDouble(finalPrice);
         tvOriginalPrice.setText("Original Price: LKR " + finalPrice);
@@ -67,9 +68,22 @@ public class RegistrationActivity extends AppCompatActivity {
         btnApplyPromo.setOnClickListener(v -> applyPromoCode());
 
         btnDone.setOnClickListener(v -> {
-            Intent homeIntent = new Intent(RegistrationActivity.this, MainActivity.class);
-            homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(homeIntent);
+            String email = etEmail.getText().toString();
+            System.out.println("hellooo 1: "+(etEmail.getText().toString()));
+            try {
+                System.out.println("hellooo 2: "+email);
+                EmailSender emailSender = new EmailSender(email, "Registration Successful", "You have successfully registered for the course " + courseName);
+                System.out.println("awawaw 2 An error occurred while sending the email: " );
+                emailSender.execute();
+
+            } catch (Exception e) {
+                // Handle the exception
+                System.out.println("awawaw An error occurred while sending the email: " + e.getMessage());
+                e.printStackTrace(); // Optionally print the stack trace for debugging
+            }
+           // Intent homeIntent = new Intent(RegistrationActivity.this, MainActivity.class);
+           // homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+          //  startActivity(homeIntent);
         });
     }
 
