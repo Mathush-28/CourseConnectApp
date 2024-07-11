@@ -1,5 +1,6 @@
 package com.example.courseconnectapp;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -7,16 +8,13 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -24,7 +22,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CourseDetailsActivity extends AppCompatActivity {
+public class CourseDetailsActivity extends AppCompatActivity implements OnMapReadyCallback {
+
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
     private TextView tvCourseNameValue;
@@ -48,16 +47,11 @@ public class CourseDetailsActivity extends AppCompatActivity {
         put("Gampaha", new LatLng(7.0916, 79.9996));
         put("Kottawa", new LatLng(6.8401, 79.9672));
     }};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_course_details);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         tvCourseNameValue = findViewById(R.id.tvCourseNameValue);
         tvCostValue = findViewById(R.id.tvCostValue);
@@ -84,12 +78,13 @@ public class CourseDetailsActivity extends AppCompatActivity {
         });
     }
 
+    @Override
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
         // Enable the My Location layer if the permission has been granted.
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // Request location permission
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         } else {
             googleMap.setMyLocationEnabled(true);
         }
@@ -120,8 +115,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
     private void showNearestCourseLocation() {
         if (googleMap == null) return;
 
-        // Add marker for user's location
-        googleMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location"));
+        // Move camera to the user's location
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 10));
 
         // Find and add marker for the nearest course location
@@ -138,14 +132,18 @@ public class CourseDetailsActivity extends AppCompatActivity {
         String nearestLocation = null;
         float minDistance = Float.MAX_VALUE;
 
-        for (Map.Entry<String, LatLng> entry : courseLocations.entrySet()) {
-            float[] results = new float[1];
-            Location.distanceBetween(userLocation.latitude, userLocation.longitude,
-                    entry.getValue().latitude, entry.getValue().longitude, results);
-            float distance = results[0];
-            if (distance < minDistance) {
-                minDistance = distance;
-                nearestLocation = entry.getKey();
+        String[] branches = rgBranch.getText().toString().split(",");
+        for (String branch : branches) {
+            LatLng branchLocation = courseLocations.get(branch.trim());
+            if (branchLocation != null) {
+                float[] results = new float[1];
+                Location.distanceBetween(userLocation.latitude, userLocation.longitude,
+                        branchLocation.latitude, branchLocation.longitude, results);
+                float distance = results[0];
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    nearestLocation = branch.trim();
+                }
             }
         }
         return nearestLocation;

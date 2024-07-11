@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#fece2f"
+    android:background="@drawable/bg"
     tools:context=".OtpActivity">
 
     <androidx.cardview.widget.CardView
@@ -15,14 +15,15 @@
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         app:cardCornerRadius="30dp"
-        app:cardElevation="20dp">
+        app:cardElevation="20dp"
+        android:backgroundTint="@color/CardColor">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Otp"
             android:textAlignment="center"
-            android:textColor="#683F02"
+            android:textColor="@color/ButtonColour"
             android:textSize="36sp"
             android:textStyle="bold"
             android:fontFamily="@font/alegreya_sc"/>
@@ -49,7 +50,7 @@
             android:id="@+id/otp_verify_btn"
             android:textSize="18sp"
             android:layout_marginTop="130dp"
-            android:backgroundTint="#A3624B05"
+            android:backgroundTint="@color/ButtonColour"
             android:layout_marginBottom="30dp"
             app:cornerRadius="20dp"/>
 

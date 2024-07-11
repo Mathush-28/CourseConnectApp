@@ -7,70 +7,89 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:gravity="center"
-    android:background="@android:color/white"
+    android:background="@drawable/bg"
     tools:context=".fragment2">
 
-
-        <EditText
-            android:id="@+id/courseName"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Course Name"
-            android:inputType="text"
-            android:layout_marginBottom="16dp"/>
+            android:layout_margin="16dp"
+            android:elevation="4dp"
+            android:padding="16dp"
+            android:backgroundTint="@color/CardColor"
+            app:cardCornerRadius="16dp">
 
-        <EditText
-            android:id="@+id/courseCost"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Course Cost (e.g., 10 USD)"
-            android:inputType="numberDecimal"
-            android:layout_marginBottom="16dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
-        <EditText
-            android:id="@+id/courseDuration"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Duration (e.g., 10 weeks)"
-            android:inputType="text"
-            android:layout_marginBottom="16dp"/>
+                        <EditText
+                            android:id="@+id/courseName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Course Name"
+                            android:inputType="text"
+                            android:layout_marginBottom="16dp"/>
 
-        <EditText
-            android:id="@+id/courseStartDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Starting Date"
-            android:focusable="false"
-            android:drawableRight="@android:drawable/ic_menu_today"
-            android:layout_marginBottom="16dp"
-            android:cursorVisible="false"
-            android:onClick="showDatePickerDialog"/>
+                        <EditText
+                            android:id="@+id/courseCost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Course Cost (e.g., 10 USD)"
+                            android:inputType="numberDecimal"
+                            android:layout_marginBottom="16dp"/>
 
+                        <EditText
+                            android:id="@+id/courseDuration"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Duration (e.g., 10 weeks)"
+                            android:inputType="text"
+                            android:layout_marginBottom="16dp"/>
 
-        <EditText
-            android:id="@+id/registrationDueDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Registration Due Date"
-            android:focusable="false"
-            android:drawableRight="@android:drawable/ic_menu_today"
-            android:layout_marginBottom="16dp"/>
+                        <EditText
+                            android:id="@+id/courseStartDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Starting Date"
+                            android:focusable="false"
+                            android:drawableRight="@android:drawable/ic_menu_today"
+                            android:layout_marginBottom="16dp"
+                            android:cursorVisible="false"
+                            android:onClick="showDatePickerDialog"/>
+
+                        <EditText
+                            android:id="@+id/registrationDueDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Registration Due Date"
+                            android:focusable="false"
+                            android:drawableRight="@android:drawable/ic_menu_today"
+                            android:layout_marginBottom="16dp"/>
+
+                </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/selectBranchesButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select Branches"
+            android:backgroundTint="@color/ButtonColour"
+            android:textColor="@color/white"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"/>
 
-
         <Button
             android:id="@+id/addCourseButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/ButtonColour"
+            android:textColor="@color/white"
             android:text="Add Course"
             android:layout_marginBottom="16dp"/>
 
-/
 </LinearLayout>

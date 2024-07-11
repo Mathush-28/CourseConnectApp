@@ -81,9 +81,9 @@ public class RegistrationActivity extends AppCompatActivity {
                 System.out.println("awawaw An error occurred while sending the email: " + e.getMessage());
                 e.printStackTrace(); // Optionally print the stack trace for debugging
             }
-           // Intent homeIntent = new Intent(RegistrationActivity.this, MainActivity.class);
-           // homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-          //  startActivity(homeIntent);
+            Intent homeIntent = new Intent(RegistrationActivity.this, User.class);
+            homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(homeIntent);
         });
     }
 
