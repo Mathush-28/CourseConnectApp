@@ -6,10 +6,16 @@
     <string name="SignInRedirectingtext">Already a User? SignIn</string>
     <string name="SignUpRedirectingtext">Not yet Registered? Sign Up</string>
     <string name="SignUp">SignUp</string>
+    <string name="Check_otp">Verify</string>
+    <string name="Otp">Enter the OTP</string>
     <string name="SignIn">SignIn</string>
     <string name="Password">Password</string>
     <string name="email">email</string>
-
+    <string name="OTP">OTP</string>
+    <string name="UserHomePage">USER HOME PAGE</string>
+    <string name="MyCourses">My Courses</string>
+    <string name="AvailableCourses">Available Courses</string>
+    <string name="map_view_content_description">Map showing the selected location</string>
     <string-array name="branches_array">
         <item>Colombo</item>
         <item>Jaffna</item>

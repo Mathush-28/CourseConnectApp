@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.security.SecureRandom;
+
 public class UserSignup extends AppCompatActivity {
 
     private FirebaseAuth auth;
@@ -28,6 +30,22 @@ public class UserSignup extends AppCompatActivity {
 
     private TextView LoginRedirectText;
 
+
+    public static String generateOTP(int length) {
+        if (length <= 0) {
+            throw new IllegalArgumentException("Length must be a positive integer.");
+        }
+
+        String numbers = "0123456789";
+        SecureRandom secureRandom = new SecureRandom();
+        StringBuilder otp = new StringBuilder(length);
+
+        for (int i = 0; i < length; i++) {
+            otp.append(numbers.charAt(secureRandom.nextInt(numbers.length())));
+        }
+
+        return otp.toString();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,18 +79,15 @@ public class UserSignup extends AppCompatActivity {
                     SignUpPassword.setError("Password can't be empty");
                 }
                 else {
-                    auth.createUserWithEmailAndPassword(user,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()){
-                                Toast.makeText(UserSignup.this, "Login successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(UserSignup.this, UserLogin.class));
-                            }
-                            else{
-                                Toast.makeText(UserSignup.this, "Login Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+                    String otp = generateOTP(4);
+                    Intent intent= new Intent(UserSignup.this, OtpActivity.class);
+                    intent.putExtra("otp", otp);
+                    intent.putExtra("email", user);
+                    intent.putExtra("password", pass);
+                    EmailSender emailSender = new EmailSender(user, "OTP - verification", otp);
+                    emailSender.execute();
+                    startActivity(intent);
+
                 }
 
 

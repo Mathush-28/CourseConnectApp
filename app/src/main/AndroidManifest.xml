@@ -17,6 +17,24 @@
         android:theme="@style/Theme.CourseConnectApp"
         tools:targetApi="31">
         <activity
+            android:name=".OtpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CourseDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisteredCourseDetail"
+            android:exported="false" />
+        <activity
+            android:name=".AvailableCourses"
+            android:exported="false" />
+        <activity
+            android:name=".RegisteredCourses"
+            android:exported="false" />
+        <activity
             android:name=".GuestUserHome"
             android:exported="false" />
         <activity
@@ -43,7 +61,6 @@
             android:name=".User"
             android:exported="false"
             android:theme="@style/FullScreenTheme" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -58,7 +75,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyByBZSXDoiljNuJGuTKg20S0S4oSC6T-S8" />
-
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
