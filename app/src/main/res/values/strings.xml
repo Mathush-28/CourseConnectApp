@@ -3,6 +3,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="SignInRedirectingtext">Already a User? SignIn</string>
+    <string name="SignUpRedirectingtext">Not yet Registered? Sign Up</string>
+    <string name="SignUp">SignUp</string>
+    <string name="SignIn">SignIn</string>
+    <string name="Password">Password</string>
+    <string name="email">email</string>
+
     <string-array name="branches_array">
         <item>Colombo</item>
         <item>Jaffna</item>
